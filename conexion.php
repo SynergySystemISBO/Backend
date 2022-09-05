@@ -6,8 +6,14 @@ class Conexion
 
     public static function conectar()
     {
-        $conexion = new mysqli("localhost", "root", "", "biblioteca");
+        try{
+        $conexion = new mysqli("localhost", "root", "", "BDproyecto");
         return $conexion;
+        }
+        catch(Exception $e){
+            echo $e;
+            die();
+        }
     }
 
     function query($query)
