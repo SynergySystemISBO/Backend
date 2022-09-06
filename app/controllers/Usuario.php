@@ -35,4 +35,18 @@ class UsuarioController{
             exit();
         }
     }
+
+    function deleteUser($id){
+        $usuario = new UsuarioModel();
+        $sqlUsuario = $usuario->deleteUser($id);
+
+        if ($sqlUsuario){
+            echo 'El usuario se borro correctamente';
+            exit();
+        }
+        else{
+            echo 'Hubo un error';
+            exit();
+        }
+    }
 }

@@ -45,7 +45,7 @@ $router->group(['before' => 'auth'], function ($router) {
 
     ////RUTAS PARA EL USUARIO ADMINISTRATIVO
     $router->group(['before' => 'rolAdministrativo'], function ($router) {
-        $router->get('/crear/{nombre}/{apellido}/{email}/{password}/{rol}', function ($nombre, $apellido, $email, $password, $rol) {
+        $router->post('/crear/{nombre}/{apellido}/{email}/{password}/{rol}', function ($nombre, $apellido, $email, $password, $rol) {
             $usuarioController = new UsuarioController();
             return $usuarioController->createUser($nombre, $apellido, $email, $password, $rol);
         });
@@ -53,6 +53,11 @@ $router->group(['before' => 'auth'], function ($router) {
         $router->get('/update/{id}/{nombre}/{apellido}/{email}/{password}/{rol}', function ($id, $nombre, $apellido, $email, $password, $rol) {
             $usuarioController = new UsuarioController();
             return $usuarioController->updateUser($id, $nombre, $apellido, $email, $password, $rol);
+        });
+
+        $router->post('/delete/{id}', function ($id) {
+            $usuarioController = new UsuarioController();
+            return $usuarioController->deleteUser($id);
         });
     });
 });

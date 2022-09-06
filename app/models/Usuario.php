@@ -41,4 +41,14 @@ class UsuarioModel
             return false;
         }
     }
+
+    public function deleteUser($id){
+        try{
+        $sql = "DELETE FROM Usuario WHERE `Usuario`.`IdUsuario` = $id";
+        return $this->db->query($sql);
+        }
+        catch(Exception $e){
+            return false;
+        }
+    }
 }
